@@ -21,8 +21,7 @@ def deleteTodoView(request, i):
     y.delete()
     return HttpResponseRedirect('/todoapp/')
 
-def editTodoView(request, i):
-    x = request.POST.get('content', False)
-    
-    y = TodoListItem.objects.get(id =i)
-    return HttpResponseRedirect('/todoapp/')
+def editView(request, i):
+    y = TodoListItem.objects.get(id=i)
+    return render(request, 'edit.html',
+    {'data': y}) 
