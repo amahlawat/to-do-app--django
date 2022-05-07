@@ -1,0 +1,5 @@
+<form action="/editTodoItem/" method="post">
+    {% csrf_token %}
+    <input type="text" name="content" value={data.content} />
+    <input type="submit" value="Update Todo Item" />
+</form>
