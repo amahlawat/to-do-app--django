@@ -2,9 +2,9 @@
 
 <form action="/addTodoItem/" method="post">
     {% csrf_token %}
-        <input type="text" name="content">
-        <input type="submit" value="Add Todo Item">
-    </form>
+    <input type="text" name="content">
+    <input type="submit" value="Add Todo Item">
+</form>
 
 <ul>
     {% for i in  all_items %}
@@ -18,3 +18,8 @@
     {% endfor %}
 </ul>
 
+<form action="/editTodoItem/" method="post">
+    {% csrf_token %}
+    <input type="text" name="content" />
+    <input type="submit" value="Edit Todo Item" />
+</form>
