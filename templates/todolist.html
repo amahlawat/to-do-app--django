@@ -8,13 +8,15 @@
 
 <ul>
     {% for i in  all_items %}
-    <li>{{i.content}}</li>
-    <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-        <input type="submit" value="Delete">
-    </form>
-    <form action="/editView/{{i.id}}/" method="post">{% csrf_token %}
-        <input type="submit" value="Edit">
-    </form>
+    <li style="display: flex; justify-content: flex-start;">
+        <span style="padding-right: 100px">{{i.content}}</span>
+        <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
+            <input type="submit" value="Delete" style="margin-right: 30px">
+        </form>
+        <form action="/editView/{{i.id}}/" method="post">{% csrf_token %}
+            <input type="submit" value="Edit">
+        </form>
+    </li>
     {% endfor %}
 </ul>
 
