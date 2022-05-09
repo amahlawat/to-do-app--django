@@ -1,4 +1,5 @@
 <h1>My To Do List</h1>
+<link href="./app.css" />
 
 <form action="/addTodoItem/" method="post">
     {% csrf_token %}
@@ -9,7 +10,7 @@
 <ul>
     {% for i in  all_items %}
     <li style="display: flex; justify-content: flex-start;">
-        <span style="padding-right: 100px">{{i.content}}</span>
+        <span style="padding-right: 100px" class>{{i.content.description}}</span>
         <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
             <input type="submit" value="Delete" style="margin-right: 30px">
         </form>
