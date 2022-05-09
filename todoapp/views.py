@@ -11,7 +11,7 @@ def todoappView(request):
 
 def addTodoView(request):
     x = request.POST.get('content', False)
-    new_item = TodoListItem(content = x)
+    new_item = TodoListItem(content = { 'description': x, 'status': 'inprogress'})
     new_item.save()
     return HttpResponseRedirect('/todoapp/')
 
@@ -30,5 +30,6 @@ def updateTodoItem(request, i):
     TodoListItem.objects.filter(pk=i).update(content = updatedData)
     return HttpResponseRedirect('/todoapp/')
     
-def taskStatus(request, i):
-    
+# def taskStatus(request, i):
+#     TodoListItem.objects.filter(pk=i).update(status = updatedData)
+#     return HttpResponseRedirect('/todoapp/')
