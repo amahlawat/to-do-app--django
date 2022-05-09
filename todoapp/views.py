@@ -12,7 +12,6 @@ def todoappView(request):
 def addTodoView(request):
     x = request.POST.get('content', False)
     new_item = TodoListItem(content = x)
-    print(" TodoListItem ", TodoListItem)
     new_item.save()
     return HttpResponseRedirect('/todoapp/')
 
@@ -24,9 +23,12 @@ def deleteTodoView(request, i):
 def editView(request, i):
     y = TodoListItem.objects.get(id=i)
     return render(request, 'edit.html',
-    {'data': { 'idx': 'test1', 'value': y}}) 
+    {'data': { 'idx': i, 'value': y}}) 
 
 def updateTodoItem(request, i):
-    TodoListItem.objects.filter(pk=i).update(field1='some value')
+    updatedData = request.POST.get('updatedData', False)
+    print(' updatedData ', updatedData)
+    TodoListItem.objects.filter(pk=i).update(content = updatedData)
+    print(" TodoListItem ", TodoListItem)
     return HttpResponseRedirect('/todoapp/')
     
