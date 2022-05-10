@@ -10,7 +10,7 @@
 <ul>
     {% for i in  all_items %}
     <li style="display: flex; justify-content: flex-start;">
-        <span style="padding-right: 100px" class>{{i.content.description}}</span>
+        <span style="padding-right: 100px" class>{{i.content}}</span>
         <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
             <input type="submit" value="Delete" style="margin-right: 30px">
         </form>
