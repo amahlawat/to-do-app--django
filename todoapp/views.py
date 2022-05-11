@@ -11,7 +11,7 @@ def todoappView(request):
 
 def addTodoView(request):
     x = request.POST.get('content', False)
-    new_item = TodoListItem(content = { 'description': x, 'status': 'inprogress'})
+    new_item = TodoListItem(description = x, status = 'inprogress')
     new_item.save()
     return HttpResponseRedirect('/todoapp/')
 
