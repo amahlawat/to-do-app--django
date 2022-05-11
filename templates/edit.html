@@ -1,5 +1,5 @@
 <form action="/updateTodoItem/{{data.idx}}/" method="post">
     {% csrf_token %}
-    <input type="text" name="updatedData" value={{data.value.content}} />
+    <input type="text" name="updatedData" value={{data.value}} />
     <input type="submit" value="Update Todo Item" />
 </form>
