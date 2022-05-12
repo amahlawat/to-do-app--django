@@ -6,8 +6,12 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 def todoappView(request):
     all_todo_items = TodoListItem2.objects.all()
-    return render(request, 'todolist.html',
-    {'all_items': all_todo_items}) 
+    if len(all_todo_items) > 0:
+        return render(request, 'todolist.html',
+        {'all_items': all_todo_items}) 
+    else:
+        return render(request, 'todolist.html',
+        {'all_items': ['test']})
 
 def addTodoView(request):
     x = request.POST.get('content', False)
