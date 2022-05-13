@@ -26,6 +26,8 @@ def deleteTodoView(request, i):
 
 def editView(request, i):
     y = TodoListItem2.objects.get(id=i)
+    print(" y ", y.description)
+    # return HttpResponseRedirect('/todoapp/')
     return render(request, 'edit.html',
     {'data': { 'idx': i, 'value': y}}) 
 
