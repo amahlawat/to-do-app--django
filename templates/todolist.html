@@ -9,7 +9,7 @@
 <ul>
     {% for i in  all_items %}
     <li style="display: flex; justify-content: flex-start;">
-        <span style="padding-right: 100px" class>{{i}}</span>
+        <span style="padding-right: 100px" class>{{i.description}}</span>
         <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
             <input type="submit" value="Delete" style="margin-right: 30px">
         </form>
@@ -17,7 +17,7 @@
             <input type="submit" value="Edit">
         </form>
         <form action="/taskStatus/{{i.id}}/" method="post">{% csrf_token %}
-            <input type="submit" value="Task Status">
+            <input type="submit" value={{i.status}}>
         </form>
     </li>
     {% endfor %}
