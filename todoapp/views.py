@@ -31,7 +31,7 @@ def editView(request, i):
 
 def updateTodoItem(request, i):
     updatedData = request.POST.get('updatedData', False)
-    TodoListItem2.objects.filter(pk=i).update(content = updatedData)
+    TodoListItem2.objects.filter(pk=i).update(description = updatedData)
     return HttpResponseRedirect('/todoapp/')
     
 # def taskStatus(request, i):
