@@ -17,7 +17,10 @@
             <input type="submit" value="Edit">
         </form>
         <form action="/taskStatus/{{i.id}}/" method="post">{% csrf_token %}
-            <input type="submit" value={{i.status}}>
+            <select name="status" id="status">
+                <option value="inprogress">In Progress</option>
+                <option value="done">Done</option>
+            </select>
         </form>
     </li>
     {% endfor %}
