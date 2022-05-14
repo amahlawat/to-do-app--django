@@ -27,7 +27,6 @@ def deleteTodoView(request, i):
 def editView(request, i):
     y = TodoListItem2.objects.get(id=i)
     print(" y ", y.description)
-    # return HttpResponseRedirect('/todoapp/')
     return render(request, 'edit.html',
     {'data': { 'idx': i, 'value': y}}) 
 
@@ -36,6 +35,8 @@ def updateTodoItem(request, i):
     TodoListItem2.objects.filter(pk=i).update(description = updatedData)
     return HttpResponseRedirect('/todoapp/')
     
-# def taskStatus(request, i):
-#     TodoListItem2.objects.filter(pk=i).update(status = updatedData)
-#     return HttpResponseRedirect('/todoapp/')
+def updateTaskStatus(request, i):
+    updatedStatus = request.POST.get('status', False)
+    print(" updatedStatus ", updatedStatus)
+    TodoListItem2.objects.filter(pk=i).update(status = updatedStatus)
+    return HttpResponseRedirect('/todoapp/')
