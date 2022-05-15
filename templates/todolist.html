@@ -1,5 +1,10 @@
+<style>
+    .done{
+        text-decoration: line-through;
+    }
+</style>
 <h1>My To Do List</h1>
-<link href="./app.css" />
+<link rel="stylesheet" href="./app.css">
 <form action="/addTodoItem/" method="post">
     {% csrf_token %}
     <input type="text" name="content">
@@ -9,7 +14,11 @@
 <ul>
     {% for i in  all_items %}
     <li style="display: flex; justify-content: flex-start;">
-        <span style="padding-right: 100px" class>{{i.description}}</span>
+        {% if i.status == 'done' %}
+            <span style="padding-right: 100px" class="done">{{i.description}}</span>
+        {% else %}
+            <span style="padding-right: 100px">{{i.description}}</span>
+        {% endif %}
         <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
             <input type="submit" value="Delete" style="margin-right: 30px">
         </form>
