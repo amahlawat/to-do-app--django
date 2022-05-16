@@ -37,6 +37,7 @@ def updateTodoItem(request, i):
     return HttpResponseRedirect('/todoapp/')
     
 def updateTaskStatus(request, i, checkbox, status):
+    print(" checkbox ", checkbox, ' status ', status)
     updatedStatus = ''
     if checkbox:
         updatedStatus = status
