@@ -1,3 +1,4 @@
+from turtle import update
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import TodoListItem2
@@ -35,8 +36,12 @@ def updateTodoItem(request, i):
     TodoListItem2.objects.filter(pk=i).update(description = updatedData)
     return HttpResponseRedirect('/todoapp/')
     
-def updateTaskStatus(request, i):
-    updatedStatus = request.POST.get('status', False)
-    print(" updatedStatus ", updatedStatus)
-    TodoListItem2.objects.filter(pk=i).update(status = updatedStatus)
+def updateTaskStatus(request, i, checkbox):
+    updatedStatus = ''
+    if checkbox.bool:
+        updatedStatus = checkbox.status
+    else:    
+        updatedStatus = request.POST.get('status', False)
+        TodoListItem2.objects.filter(pk=i).update(status = updatedStatus)
     return HttpResponseRedirect('/todoapp/')
+
