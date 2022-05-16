@@ -36,10 +36,10 @@ def updateTodoItem(request, i):
     TodoListItem2.objects.filter(pk=i).update(description = updatedData)
     return HttpResponseRedirect('/todoapp/')
     
-def updateTaskStatus(request, i, checkbox):
+def updateTaskStatus(request, i, checkbox, status):
     updatedStatus = ''
-    if checkbox.bool:
-        updatedStatus = checkbox.status
+    if checkbox:
+        updatedStatus = status
     else:    
         updatedStatus = request.POST.get('status', False)
         TodoListItem2.objects.filter(pk=i).update(status = updatedStatus)
