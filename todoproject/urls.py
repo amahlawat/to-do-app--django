@@ -24,5 +24,5 @@ urlpatterns = [
     path('deleteTodoItem/<int:i>/', deleteTodoView),
     path('editView/<int:i>/', editView),
     path('updateTodoItem/<int:i>/', updateTodoItem),
-    path('updateTaskStatus/<int:i>/<boolean:checkbox>/<string:status>', updateTaskStatus)
+    path('updateTaskStatus/<int:i>/<str:checkbox>/<str:status>', updateTaskStatus)
 ]
