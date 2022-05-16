@@ -15,21 +15,21 @@
     {% for i in  all_items %}
     <li style="display: flex; justify-content: flex-start;">
         {% if i.status == 'done' %}
-            <form action="/updateTaskStatus/{{i.id}}/{{true, in progress}}" 
+            <form action="/updateTaskStatus/{{i.id}}/true/in progress" id="update-form-id-2"
                 method="post">{% csrf_token %}
-                <input type="checkbox" checked>
-                    <input type="submit"  hidden />
-                </input>
+                    <input type="checkbox" checked
+                        onclick="document.getElementById('update-form-id-2').submit();"    
+                    />
             </form>    
             <span class="outer done" style="padding-right: 100px">
                 <span class="inner">{{i.description}}</span>
             </span>
         {% else %}
-            <form action="/updateTaskStatus/{{i.id}}/{{true, done}}" 
+            <form action="/updateTaskStatus/{{i.id}}/true/done" id="update-form-id"
                 method="post">{% csrf_token %}
-                <input type="checkbox">
-                    <input type="submit"  hidden />
-                </input>
+                    <input type="checkbox"  
+                        onclick="document.getElementById('update-form-id').submit();"    
+                    />
             </form>    
             <span class="outer" style="padding-right: 100px">
                 <span class="inner">{{i.description}}</span>
@@ -41,7 +41,7 @@
         <form action="/editView/{{i.id}}/" method="post">{% csrf_token %}
             <input type="submit" value="Edit">
         </form>
-        <form action="/updateTaskStatus/{{i.id}}/{{false, ''}}" method="post">{% csrf_token %}
+        <form action="/updateTaskStatus/{{i.id}}/false/''" method="post">{% csrf_token %}
             <select name="status" id="{{i.status}}">
                 {% if i.status == 'in progress'  %}
                     <option value="in progress" selected>In Progress</option>
