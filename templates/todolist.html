@@ -15,7 +15,7 @@
     {% for i in  all_items %}
     <li style="display: flex; justify-content: flex-start;">
         {% if i.status == 'done' %}
-            <form action="/updateTaskStatus/{{i.id}}/true/in progress" id="update-form-id-2"
+            <form action="/updateTaskStatus/{{i.id}}/True/in progress" id="update-form-id-2"
                 method="post">{% csrf_token %}
                     <input type="checkbox" checked
                         onclick="document.getElementById('update-form-id-2').submit();"    
@@ -25,7 +25,7 @@
                 <span class="inner">{{i.description}}</span>
             </span>
         {% else %}
-            <form action="/updateTaskStatus/{{i.id}}/true/done" id="update-form-id"
+            <form action="/updateTaskStatus/{{i.id}}/True/done" id="update-form-id"
                 method="post">{% csrf_token %}
                     <input type="checkbox"  
                         onclick="document.getElementById('update-form-id').submit();"    
@@ -35,12 +35,14 @@
                 <span class="inner">{{i.description}}</span>
             </span>
         {% endif %}
-        <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
-            <input type="submit" value="Delete" style="margin-right: 30px">
-        </form>
-        <form action="/editView/{{i.id}}/" method="post">{% csrf_token %}
-            <input type="submit" value="Edit">
-        </form>
+        {% if i.status == 'in progress' %}
+            <form action="/deleteTodoItem/{{i.id}}/" method="post">{% csrf_token %}
+                <input type="submit" value="Delete" style="margin-right: 30px">
+            </form>
+            <form action="/editView/{{i.id}}/" method="post">{% csrf_token %}
+                <input type="submit" value="Edit">
+            </form>
+        {% endif %}
         <form action="/updateTaskStatus/{{i.id}}/false/''" method="post">{% csrf_token %}
             <select name="status" id="{{i.status}}">
                 {% if i.status == 'in progress'  %}
