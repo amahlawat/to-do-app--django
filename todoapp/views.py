@@ -37,12 +37,12 @@ def updateTodoItem(request, i):
     return HttpResponseRedirect('/todoapp/')
     
 def updateTaskStatus(request, i, checkbox, status):
-    print(" checkbox ", checkbox, ' status ', status)
+    print(" checkbox ", checkbox, 'type', type(checkbox), ' status ', status, ' type ', type(status))
     updatedStatus = ''
-    if checkbox:
+    if checkbox == 'True':
         updatedStatus = status
     else:    
         updatedStatus = request.POST.get('status', False)
-        TodoListItem2.objects.filter(pk=i).update(status = updatedStatus)
+    TodoListItem2.objects.filter(pk=i).update(status = updatedStatus)
     return HttpResponseRedirect('/todoapp/')
 
